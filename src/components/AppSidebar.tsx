@@ -45,7 +45,8 @@ const navigationItems = [
 ];
 
 export function AppSidebar({ currentView, setCurrentView }: AppSidebarProps) {
-  const { collapsed } = useSidebar();
+  const { state } = useSidebar();
+  const collapsed = state === "collapsed";
 
   return (
     <Sidebar className={`${collapsed ? 'w-16' : 'w-64'} border-r border-border/50 bg-sidebar`}>
