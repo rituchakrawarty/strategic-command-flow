@@ -6,6 +6,11 @@ import { StrategicBriefing } from '@/components/StrategicBriefing';
 import { ActionHub } from '@/components/ActionHub';
 import { CommandBar } from '@/components/CommandBar';
 import { IncidentConsole } from '@/components/IncidentConsole';
+import { BrandView } from '@/components/views/BrandView';
+import { PersonalView } from '@/components/views/PersonalView';
+import { InformativeView } from '@/components/views/InformativeView';
+import { CanvasNavigator } from '@/components/CanvasNavigator';
+import { PersistentRibbon } from '@/components/PersistentRibbon';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/AppSidebar';
 
@@ -66,13 +71,22 @@ const Index = () => {
             </div>
           </div>
 
+          {/* Canvas Navigator */}
+          <CanvasNavigator currentView={currentView} setCurrentView={setCurrentView} />
+
           {/* Main Content Area */}
           <div className="h-[calc(100vh-4rem)] overflow-y-auto">
             {currentView === 'overview' && <CommandCenter />}
             {currentView === 'performance' && <BrandPerformanceSnapshot />}
             {currentView === 'briefing' && <StrategicBriefing />}
             {currentView === 'actions' && <ActionHub />}
+            {currentView === 'brand' && <BrandView />}
+            {currentView === 'personal' && <PersonalView />}
+            {currentView === 'informative' && <InformativeView />}
           </div>
+
+          {/* Persistent Why/What/How Ribbon */}
+          <PersistentRibbon />
 
           {/* Command Bar */}
           <CommandBar />
